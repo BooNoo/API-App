@@ -13,7 +13,7 @@ connection.connect((err) => {
   console.log('Database connected!');
 });
 
-app.use(morgan('short'))
+app.use(morgan('combined'))
 
 app.get("/", (req, res) => {
   console.log("response");
