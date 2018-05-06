@@ -12,12 +12,12 @@ const connection = mysql.createPool({
     database: 'users_test'
 });
 
-connection.connect(function (err) {
-    if (err) {
-        throw err;
-    }
-    console.log('Database connected!');
-});
+// connection.connect(function (err) {
+//     if (err) {
+//         throw err;
+//     }
+//     console.log('Database connected!');
+// });
 
 router.get("/", function (req, res) {
     connection.query('SELECT * FROM users', function (err, rows, fields) {
