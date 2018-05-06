@@ -3,11 +3,10 @@ const bodyParser = require("body-parser");
 const app = express();
 const morgan = require('morgan');
 const PORT = process.env.PORT || 3003;
-
-// var userRouter = require('./routes/user');
+const userRouter = require('./routes/user');
 
 app.use(morgan('short'));
-// app.use('/users', userRouter);
+app.use('/users', userRouter);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static('./public'));

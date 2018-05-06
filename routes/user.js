@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 router.use(bodyParser.urlencoded({extended: false}));
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'werTT75&',
