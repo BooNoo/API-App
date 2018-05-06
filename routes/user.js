@@ -1,23 +1,16 @@
 const express = require('express');
 var router = express.Router();
-const mysql = require('mysql');
 const bodyParser = require("body-parser");
+const mysql = require('mysql');
 
-router.use(bodyParser.urlencoded({extended: false}));
-
-const connection = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'werTT75&',
-    database: 'users_test'
+var connection = mysql.createPool({
+    host: process.env.DATA_BASE == 'dev' ? 'localhost' : 'eu-cdbr-west-02.cleardb.net',
+    user: process.env.DATA_BASE == 'dev' ? 'root' : 'b1750ef905d503',
+    password: process.env.DATA_BASE == 'dev' ? 'werTT75&' : '30524845',
+    database: process.env.DATA_BASE == 'dev' ? 'werTT75&' : 'heroku_9517f6a4faa8437'
 });
 
-// connection.connect(function (err) {
-//     if (err) {
-//         throw err;
-//     }
-//     console.log('Database connected!');
-// });
+router.use(bodyParser.urlencoded({extended: false}));
 
 router.get("/", function (req, res) {
     connection.query('SELECT * FROM users', function (err, rows, fields) {

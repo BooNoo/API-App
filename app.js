@@ -16,5 +16,6 @@ app.get("/", function (req, res) {
 });
 
 app.listen(PORT, function () {
+    console.log(process.env.DATA_BASE);
     console.log("server up on: " + PORT);
 });
