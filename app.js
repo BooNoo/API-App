@@ -4,7 +4,7 @@ const app = express();
 const morgan = require('morgan');
 const PORT = process.env.PORT || 3003;
 
-var userRouter = require('./routes/user');
+// var userRouter = require('./routes/user');
 
 app.use(morgan('short'));
 // app.use('/users', userRouter);
