@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3003;
 const userRouter = require('./routes/user');
 
 app.use(morgan('short'));
-app.use('/users', userRouter);
+app.use('/api/users', userRouter);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static('./public'));
