@@ -14,7 +14,7 @@ if (port === 3003) {
     var connection = mysql.createConnection({
         host: 'eu-cdbr-west-02.cleardb.net',
         user: 'b1750ef905d503',
-        password: '30524845&',
+        password: '30524845',
         database: 'heroku_9517f6a4faa8437'
     });
 }
