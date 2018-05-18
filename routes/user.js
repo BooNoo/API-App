@@ -33,9 +33,16 @@ var db = require('../models/dbconnection');
 //     return 'https://storage.googleapis.com/${CLOUD_BUCKET}/${filename}';
 // }
 
+const corsm = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    next();
+};
+
 router.use(bodyParser.urlencoded({extended: false}));
 
-router.get("/", function (req, res) {
+router.get("/", corsm, function (req, res) {
     db.query('SELECT * FROM users', function (err, rows, fields) {
         res.json(rows);
     });
