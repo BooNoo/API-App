@@ -3,11 +3,11 @@
 var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
-var env = process.env.NODE_ENV || "development";
+var port = process.env.PORT || 3003;
+var env =   (port === 3003) ? "development" : "production";
 var config = require('../config/config.json')[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var db = {};
-
 
 fs
     .readdirSync(__dirname)

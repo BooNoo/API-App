@@ -30,7 +30,8 @@ exports.signin = function (req, res) {
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
         res.json({
             message: "ok",
-            token: token
+            token: token,
+            role: user.role
         });
     }).catch(function (err) {
         console.log("Error:", err);
