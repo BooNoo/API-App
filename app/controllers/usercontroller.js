@@ -29,7 +29,6 @@ exports.create = function (req,res) {
                 password: userPassword,
                 role: req.body.role
             };
-            console.log(data);
             User.create(data).then(function (newUser, created) {
                 if (!newUser) {
                     res.json({error: true, message: "Error in user create"})
