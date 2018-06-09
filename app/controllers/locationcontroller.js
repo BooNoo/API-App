@@ -6,7 +6,9 @@ var exports = module.exports = {};
 exports.create = function (req, res) {
     var data = {
         name: req.body.name,
-        code: req.body.code
+        code: req.body.code,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
     };
     Location.create(data).then(function (location, created) {
         if (!location) {
@@ -42,7 +44,9 @@ exports.byId = function (req, res) {
 exports.updateById = function (req, res) {
     var data = {
         name: req.body.name,
-        code: req.body.code
+        code: req.body.code,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
     };
     Location.update(data,{
         where: {

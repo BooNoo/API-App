@@ -16,6 +16,16 @@ module.exports = function(sequelize, Sequelize) {
         code: {
             type: Sequelize.STRING,
             notEmpty: true
+        },
+
+        latitude: {
+            type: Sequelize.FLOAT,
+            notEmpty: true
+        },
+
+        longitude: {
+            type: Sequelize.FLOAT,
+            notEmpty: true
         }
     });
 
