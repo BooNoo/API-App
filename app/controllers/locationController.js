@@ -33,7 +33,7 @@ exports.byId = function (req, res) {
         }
     }).then(function (location) {
         if (!location) {
-            res.json({error: true, message: "Locations not found"})
+            res.json({error: true, message: "Location not found"})
         } else {
             res.json(location)
         }
@@ -54,9 +54,9 @@ exports.updateById = function (req, res) {
         }
     }).then(function (location) {
         if (!location) {
-            res.json({error: true, message: "Locations not found"})
+            res.json({error: true, message: "Location not found"})
         } else {
-            res.json({error: false, message: "Locations updated"})
+            res.json({error: false, message: "Location updated"})
         }
     })
 };

@@ -1,5 +1,5 @@
-var authController = require('../controllers/authcontroller.js');
-var userController = require('../controllers/usercontroller.js');
+var authController = require('../controllers/authController.js');
+var userController = require('../controllers/userController.js');
 
 module.exports = function(app, passport) {
 

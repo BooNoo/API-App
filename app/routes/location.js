@@ -1,4 +1,4 @@
-var locationController = require('../controllers/locationcontroller.js');
+var locationController = require('../controllers/locationController.js');
 
 module.exports = function(app, passport) {
     app.post('/location', passport.authenticate('jwt', { session: false }), locationController.create);
