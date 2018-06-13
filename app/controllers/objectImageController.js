@@ -3,6 +3,21 @@ var ObjectImage = models.objectImage;
 
 var exports = module.exports = {};
 
+exports.create = function (req, res) {
+    var data = {
+        url: req.body.url,
+        fk_objectid: req.params.id
+    };
+    ObjectImage.create(data).then(function (location, created) {
+        if (!location) {
+            res.json({error: true, message: "Error in object image create"})
+        }
+        if (location) {
+            res.json({error: false, message: "Object image created"})
+        }
+    });
+};
+
 exports.getById = function (req, res) {
     ObjectImage.findOne({
         where: {

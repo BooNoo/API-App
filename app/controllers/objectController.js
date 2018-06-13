@@ -7,7 +7,8 @@ var exports = module.exports = {};
 exports.create = function (req, res) {
     var data = {
         name: req.body.name,
-        objectImages: req.body.objectImages
+        objectImages: req.body.objectImages,
+        fk_typeid: req.body.fk_typeid
     };
     Object.create(data, {
         include: [ ObjectImage ]
@@ -60,7 +61,8 @@ exports.getById = function (req, res) {
 
 exports.updateById = function (req, res) {
     var data = {
-        name: req.body.name
+        name: req.body.name,
+        fk_typeid: req.body.fk_typeid
     };
     Object.update(data,{
         where: {

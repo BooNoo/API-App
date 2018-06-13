@@ -46,9 +46,10 @@ var models = require("./app/models");
 //Routes
 var authRoute = require('./app/routes/auth.js')(app,passport);
 var userRoute = require('./app/routes/user.js')(app,passport);
-var cityRoute = require('./app/routes/location.js')(app,passport);
+var locationRoute = require('./app/routes/location.js')(app,passport);
 var objectRoute = require('./app/routes/object.js')(app,passport);
 var objectImageRoute = require('./app/routes/object-image.js')(app,passport);
+var locationTypeRoute = require('./app/routes/location-type.js')(app,passport);
 
 //load passport strategies
 require('./app/config/passport/passport.js')(passport, models.user);

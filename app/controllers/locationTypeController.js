@@ -1,33 +1,30 @@
 var models = require("../models");
-var Location = models.location;
+var LocationType = models.locationType;
 
 var exports = module.exports = {};
 
 exports.create = function (req, res) {
     var data = {
-        name: req.body.name,
-        code: req.body.code,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude
+        name: req.body.name
     };
-    Location.create(data).then(function (location, created) {
+    LocationType.create(data).then(function (location, created) {
         if (!location) {
-            res.json({error: true, message: "Error in location create"})
+            res.json({error: true, message: "Error in location type create"})
         }
         if (location) {
-            res.json({error: false, message: "Location created"})
+            res.json({error: false, message: "Location type created"})
         }
     });
 };
 
 exports.all = function (req, res) {
-    Location.findAll().then(function (locations) {
+    LocationType.findAll().then(function (locations) {
         res.json(locations)
     })
 };
 
 exports.byId = function (req, res) {
-    Location.findOne({
+    LocationType.findOne({
         where: {
             id: req.params.id
         }
@@ -43,34 +40,31 @@ exports.byId = function (req, res) {
 
 exports.updateById = function (req, res) {
     var data = {
-        name: req.body.name,
-        code: req.body.code,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude
+        name: req.body.name
     };
-    Location.update(data,{
+    LocationType.update(data,{
         where: {
             id: req.params.id
         }
     }).then(function (location) {
         if (!location) {
-            res.json({error: true, message: "Location not found"})
+            res.json({error: true, message: "Location type not found"})
         } else {
-            res.json({error: false, message: "Location updated"})
+            res.json({error: false, message: "Location type updated"})
         }
     })
 };
 
 exports.deleteById = function (req, res) {
-    Location.destroy({
+    LocationType.destroy({
         where: {
             id: req.params.id
         }
     }).then(function (value) {
         if (!value) {
-            res.json({error: true, message: "Error while delete location"})
+            res.json({error: true, message: "Error while delete location type"})
         } else {
-            res.json({error: false, message: "Success delete location"})
+            res.json({error: false, message: "Success delete location type"})
         }
     })
 };

@@ -28,8 +28,10 @@ Object.keys(db).forEach(function (modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.locationType.hasOne(db.object, { foreignKey: 'fk_typeid', sourceKey: 'id'});
+// db.locationType.belongsTo(db.object, {foreignKey: 'fk_typeid', targetKey: 'id'});
+
 db.object.hasMany(db.objectImage, {foreignKey: 'fk_objectid', sourceKey: 'id', onDelete: 'cascade'});
 db.objectImage.belongsTo(db.object, {foreignKey: 'fk_objectid', targetKey: 'id'});
-// MapObject.hasMany(MapObjectImage);
 
 module.exports = db;
