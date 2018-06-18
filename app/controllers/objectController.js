@@ -1,17 +1,24 @@
 var models = require("../models");
 var Object = models.object;
 var ObjectImage = models.objectImage;
+var Location = models.location;
+var LocationType = models.locationType;
+
 
 var exports = module.exports = {};
 
 exports.create = function (req, res) {
     var data = {
         name: req.body.name,
+        information: req.body.information,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
         objectImages: req.body.objectImages,
-        fk_typeid: req.body.fk_typeid
+        fk_typeid: req.body.fk_typeid,
+        fk_locationid: req.body.fk_locationid
     };
     Object.create(data, {
-        include: [ ObjectImage ]
+        include: [ObjectImage]
     }).then(function (location, created) {
         if (!location) {
             res.json({
@@ -31,10 +38,17 @@ exports.create = function (req, res) {
 exports.getAll = function (req, res) {
     Object.findAll({
         // attributes: ['name'],
-        include: [{
-            model: ObjectImage
-            // attributes: ['url'],
-        }]
+        include: [
+            {
+                model: ObjectImage
+                // attributes: ['url'],
+            },
+            {
+                model: Location
+            },
+            {
+                model: LocationType
+            }]
     }).then(function (companies) {
         res.send(companies)
     });
@@ -45,13 +59,23 @@ exports.getById = function (req, res) {
         where: {
             id: req.params.id
         },
-        include: [{
-            model: ObjectImage
-            // attributes: ['url'],
-        }]
+        include: [
+            {
+                model: ObjectImage
+                // attributes: ['url'],
+            },
+            {
+                model: Location
+            },
+            {
+                model: LocationType
+            }]
     }).then(function (location) {
         if (!location) {
-            res.json({error: true, message: "Object not found"})
+            res.json({
+                error: true,
+                message: "Object not found"
+            })
         } else {
             res.json(location)
         }
@@ -62,17 +86,27 @@ exports.getById = function (req, res) {
 exports.updateById = function (req, res) {
     var data = {
         name: req.body.name,
-        fk_typeid: req.body.fk_typeid
+        information: req.body.information,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        fk_typeid: req.body.fk_typeid,
+        fk_locationid: req.body.fk_locationid
     };
-    Object.update(data,{
+    Object.update(data, {
         where: {
             id: req.params.id
         }
     }).then(function (location) {
         if (!location) {
-            res.json({error: true, message: "Object not found"})
+            res.json({
+                error: true,
+                message: "Object not found"
+            })
         } else {
-            res.json({error: false, message: "Object updated"})
+            res.json({
+                error: false,
+                message: "Object updated"
+            })
         }
     })
 };
@@ -84,9 +118,15 @@ exports.deleteById = function (req, res) {
         }
     }).then(function (value) {
         if (!value) {
-            res.json({error: true, message: "Error while delete object"})
+            res.json({
+                error: true,
+                message: "Error while delete object"
+            })
         } else {
-            res.json({error: false, message: "Success delete object"})
+            res.json({
+                error: false,
+                message: "Success delete object"
+            })
         }
     })
 };

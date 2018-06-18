@@ -29,6 +29,10 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.locationType.hasOne(db.object, { foreignKey: 'fk_typeid', sourceKey: 'id'});
+db.object.belongsTo(db.locationType, {foreignKey: 'fk_typeid', targetKey: 'id'});
+
+db.location.hasOne(db.object, { foreignKey: 'fk_locationid', sourceKey: 'id'});
+db.object.belongsTo(db.location, {foreignKey: 'fk_locationid', targetKey: 'id'});
 // db.locationType.belongsTo(db.object, {foreignKey: 'fk_typeid', targetKey: 'id'});
 
 db.object.hasMany(db.objectImage, {foreignKey: 'fk_objectid', sourceKey: 'id', onDelete: 'cascade'});
