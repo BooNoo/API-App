@@ -15,7 +15,7 @@ module.exports = function (sequelize, Sequelize) {
             notEmpty: true
         },
         information: {
-            type: Sequelize.STRING,
+            type: Sequelize.TEXT('long'),
             notEmpty: true
         },
         latitude: {

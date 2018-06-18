@@ -5,7 +5,8 @@ var exports = module.exports = {};
 
 exports.create = function (req, res) {
     var data = {
-        name: req.body.name
+        name: req.body.name,
+        iconUrl: req.body.iconUrl
     };
     LocationType.create(data).then(function (location, created) {
         if (!location) {
@@ -34,13 +35,13 @@ exports.byId = function (req, res) {
         } else {
             res.json(location)
         }
-
     })
 };
 
 exports.updateById = function (req, res) {
     var data = {
-        name: req.body.name
+        name: req.body.name,
+        iconUrl: req.body.iconUrl
     };
     LocationType.update(data,{
         where: {

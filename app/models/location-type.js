@@ -11,6 +11,11 @@ module.exports = function(sequelize, Sequelize) {
         name: {
             type: Sequelize.STRING,
             notEmpty: true
+        },
+
+        iconUrl: {
+            type: Sequelize.TEXT('long'),
+            notEmpty: true
         }
     });
 
