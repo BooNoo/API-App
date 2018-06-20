@@ -4,9 +4,10 @@ var ObjectImage = models.objectImage;
 var exports = module.exports = {};
 
 exports.create = function (req, res) {
+    console.log(req.body.url);
     var data = {
         url: req.body.url,
-        fk_objectid: req.params.id
+        fk_objectid: req.body.fk_objectid
     };
     ObjectImage.create(data).then(function (location, created) {
         if (!location) {

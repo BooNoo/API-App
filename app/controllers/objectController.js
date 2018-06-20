@@ -1,6 +1,8 @@
 var models = require("../models");
 var Object = models.object;
 var ObjectImage = models.objectImage;
+var ObjectVideo = models.objectVideo;
+var ObjectAudio = models.objectAudio;
 var Location = models.location;
 var LocationType = models.locationType;
 
@@ -48,6 +50,12 @@ exports.getAll = function (req, res) {
             },
             {
                 model: LocationType
+            },
+            {
+                model: ObjectVideo
+            },
+            {
+                model: ObjectAudio
             }]
     }).then(function (companies) {
         res.send(companies)
@@ -69,6 +77,12 @@ exports.getById = function (req, res) {
             },
             {
                 model: LocationType
+            },
+            {
+                model: ObjectVideo
+            },
+            {
+                model: ObjectAudio
             }]
     }).then(function (location) {
         if (!location) {
